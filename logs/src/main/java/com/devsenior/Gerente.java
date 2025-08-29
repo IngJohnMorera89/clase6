@@ -1,17 +1,12 @@
 package com.devsenior;
 
-import org.apache.logging.log4j.*;
+public class Gerente extends Empleado {
 
-public class Gerente extends  Empleado {
+    private String departamento;
 
-     private String departamento;
-
-    public Gerente(int edad, String nombre, double salario) {
-        super(edad, nombre, salario);
-
+    public Gerente(String nombre, int edad, double salario, String departamento) {
+        super(nombre, edad, salario);
         this.departamento = departamento;
-
-
     }
 
     @Override

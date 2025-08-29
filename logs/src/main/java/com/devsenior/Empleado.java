@@ -1,36 +1,37 @@
 package com.devsenior;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.*;
 
 public class Empleado {
 
     private static final Logger logger = LogManager.getLogger(Empleado.class);
 
-    // ATRIBUTOS
+    // Atributos: nombre, eddad, salario
     private String nombre;
     private int edad;
     private double salario;
 
-    //CONSTRUCTOR
-    public Empleado(int edad, String nombre, double salario) {
-        this.edad = edad;
+    // Constructor
+    public Empleado(String nombre, int edad, double salario) {
         this.nombre = nombre;
+        this.edad = edad;
         this.salario = salario;
 
-        if (edad < 0) {
-            logger.warn("El empleado " + nombre + " es menor de Edad");
+        if (edad < 18) {
+            logger.warn("El empleado " + nombre + " es menor de edad.");
         }
     }
 
+    // aumentrarSalario
     public void aumentarSalario(double cantidad) {
         if (cantidad < 0) {
-           logger.warn("No se puede aumentar el salario");
-           return;
+            logger.warn("No se puede aumentar el salario en una cantidad negativa: " + cantidad);
+            return;
         }
 
         this.salario += cantidad;
     }
+
     @Override
     public String toString() {
         return "Empleado{" +
@@ -39,6 +40,4 @@ public class Empleado {
                 ", salario=" + salario +
                 '}';
     }
-
-
 }
